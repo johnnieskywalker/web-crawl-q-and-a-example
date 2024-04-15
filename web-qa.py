@@ -20,12 +20,16 @@ from ast import literal_eval
 # Regex pattern to match a URL
 HTTP_URL_PATTERN = r'^http[s]{0,1}://.+$'
 
-# Define OpenAI api_key
-# openai.api_key = '<Your API Key>'
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
+
+openai.api_key = os.getenv('OPENAI_API_KEY')
 
 # Define root domain to crawl
-domain = "openai.com"
-full_url = "https://openai.com/"
+domain = "ethena-labs.gitbook.io"
+full_url = "https://ethena-labs.gitbook.io/ethena-labs/solution-overview/usde-overview"
 
 # Create a class to parse the HTML and get the hyperlinks
 class HyperlinkParser(HTMLParser):
@@ -351,8 +355,8 @@ def create_context(
 
 def answer_question(
     df,
-    model="text-davinci-003",
-    question="Am I allowed to publish model outputs to Twitter, without a human review?",
+    model="davinci-002",
+    question="What makes USDe stablecoin?",
     max_len=1800,
     size="ada",
     debug=False,
@@ -394,6 +398,22 @@ def answer_question(
 ### Step 13
 ################################################################################
 
-print(answer_question(df, question="What day is it?", debug=False))
+print(answer_question(df, question="How is USDe pegged to USD?", debug=False))
 
-print(answer_question(df, question="What is our newest embeddings model?"))
+print(answer_question(df, question="Is sUSDe reward bearing token, what standard does it use?"))
+print(answer_question(df, question="How is USDe different from LUSD?"))
+print(answer_question(df, question="How is USDe different from DAI?"))
+print(answer_question(df, question="How is USDe different from USTC can it loose the peg like UST did?"))
+print(answer_question(df, question="What does it mean USDe is softpegged?"))
+print(answer_question(df, question="Is USDe algorythmic stablecoin?"))
+print(answer_question(df, question="Is $ENA utility token?"))
+print(answer_question(df, question="What are shards, does it make sense to farm it?"))
+print(answer_question(df, question="How is $ENA different from $LUNA?"))
+print(answer_question(df, question="What are risks of using $USDe ?"))
+print(answer_question(df, question="Is it safe to leverage USDe using gearbox protocol?"))
+print(answer_question(df, question="How is Ethena related to pendle?"))
+print(answer_question(df, question="Is there something about restaking in Ethena?"))
+print(answer_question(df, question="Can you make pre-mortem analysis of USDe?"))
+print(answer_question(df, question="Can somebody just simply fork USDe?"))
+print(answer_question(df, question="Why does USDe not support any L2s or L3s?"))
+print(answer_question(df, question="Can someone just print USDe out of thin air?"))
